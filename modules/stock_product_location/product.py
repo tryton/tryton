@@ -15,6 +15,10 @@ class Template(copy_template_filtered('locations'), metaclass=PoolMeta):
             'invisible': ~Eval('type').in_(['goods', 'assets']),
             })
 
+    @property
+    def locations_used(self):
+        yield from self.locations
+
 
 class Product(copy_product_filtered('locations'), metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -26,3 +30,10 @@ class Product(copy_product_filtered('locations'), metaclass=PoolMeta):
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
             })
+
+    @property
+    def locations_used(self):
+        yield from self.locations
+        for location in self.template.locations_used:
+            if not location.product:
+                yield location
