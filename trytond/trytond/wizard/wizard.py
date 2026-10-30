@@ -319,14 +319,20 @@ class Wizard(URLMixin, PoolBase):
     @classmethod
     def delete(cls, session_id):
         "Delete the session"
-        Session = Pool().get('ir.session.wizard')
+        pool = Pool()
+        Session = pool.get('ir.session.wizard')
+        transaction = Transaction()
+        session = Session(session_id)
+        if session.create_uid.id != transaction.user:
+            raise AccessError(
+                gettext('ir.msg_access_wizard_error', wizard=cls.__name__))
         end = getattr(cls, cls.end_state, None)
         if end:
             wizard = cls(session_id)
             action = end(wizard)
         else:
             action = None
-        Session.delete([Session(session_id)])
+        Session.delete([session])
         return action
 
     @classmethod
@@ -408,8 +414,12 @@ class Wizard(URLMixin, PoolBase):
     def __init__(self, session_id):
         pool = Pool()
         Session = pool.get('ir.session.wizard')
-        self._session_id = session_id
+        transaction = Transaction()
         session = Session(session_id)
+        if session.create_uid.id != transaction.user:
+            raise AccessError(
+                gettext('ir.msg_access_wizard_error', wizard=self.__name__))
+        self._session_id = session.id
         data = defaultdict(dict)
         data.update(json.loads(session.data, object_hook=JSONDecoder()))
         for state_name, state in self.states.items():
