@@ -35,6 +35,22 @@ class WizardTestCase(unittest.TestCase):
         Wizard.delete(session_id)
 
     @with_transaction()
+    def test_delete_different_user(self):
+        "Delete session from a different user"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
+
+        session_id, _, _ = Wizard.create()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                Wizard.delete(session_id)
+
+    @with_transaction()
     def test_session(self):
         'Session Wizard'
         pool = Pool()
@@ -71,6 +87,22 @@ class WizardTestCase(unittest.TestCase):
         group_a, group_b = session.start.groups
         self.assertEqual(group_a.name, 'Group A')
         self.assertEqual(group_b.name, 'Group B')
+
+    @with_transaction()
+    def test_session_different_user(self):
+        "Use session from a different user"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
+
+        session_id, _, _ = Wizard.create()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                Wizard(session_id)
 
     @with_transaction()
     def test_execute(self):
