@@ -67,8 +67,7 @@ class Move(metaclass=PoolMeta):
             pattern.setdefault('template', self.product.template.id)
             pattern.setdefault('product', self.product.id)
 
-        locations = self.product.locations + self.product.template.locations
-        for product_location in locations:
+        for product_location in self.product.locations_used:
             if product_location.match(pattern):
                 return product_location.location
 
