@@ -1327,17 +1327,19 @@
                 return values[0].rec_name;
             });
         },
-        validate: function(fields, softvalidation, pre_validate) {
+        validate: function(field_names, softvalidation, pre_validate) {
             var result = true;
             for (var fname in this.model.fields) {
                 var field = this.model.fields[fname];
-                if (fields && !~fields.indexOf(fname)) {
+                if (field_names && !~field_names.indexOf(fname)) {
                     continue;
                 }
                 if (!this.get_loaded([fname])) {
                     continue;
                 }
-                if (field.description.readonly) {
+                if (field.description.readonly &&
+                    !((field instanceof Sao.field.One2Many) ||
+                        (field instanceof Sao.field.Many2Many))) {
                     continue;
                 }
                 if ([this.group.exclude_field, this.group.parent_name].includes(fname)) {
