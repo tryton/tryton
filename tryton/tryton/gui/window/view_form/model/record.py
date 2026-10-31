@@ -439,14 +439,17 @@ class Record:
         except RPCException:
             return ''
 
-    def validate(self, fields=None, softvalidation=False, pre_validate=None):
+    def validate(
+            self, field_names=None, softvalidation=False, pre_validate=None):
         res = True
         for field_name, field in list(self.group.fields.items()):
-            if fields is not None and field_name not in fields:
+            if field_names is not None and field_name not in field_names:
                 continue
             if not self.get_loaded([field_name]):
                 continue
-            if field.attrs.get('readonly'):
+            if (field.attrs.get('readonly')
+                    and not isinstance(
+                        field, (fields.O2MField, fields.M2MField))):
                 continue
             if field_name in {
                     self.group.exclude_field, self.group.parent_name}:
