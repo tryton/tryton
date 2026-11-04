@@ -5,7 +5,7 @@ from decimal import Decimal
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import PoolMeta
-from trytond.pyson import Bool, Eval, Id
+from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 
 
@@ -17,21 +17,23 @@ class Carrier(metaclass=PoolMeta):
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
             'required': Eval('carrier_cost_method') == 'weight',
-            'editable': Bool(Eval('weight_price_list', [])),
+            'editable': ~Eval('weight_price_list', []),
             },
         help="The Unit of Measure of weight criteria for the price list.")
     weight_currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
             'required': Eval('carrier_cost_method') == 'weight',
-            'editable': Bool(Eval('weight_price_list', [])),
+            'editable': ~Eval('weight_price_list', []),
             },
         help="The currency of the price.")
     weight_price_list = fields.One2Many('carrier.weight_price_list', 'carrier',
         'Price List',
         states={
             'invisible': Eval('carrier_cost_method') != 'weight',
-            'readonly': ~(Eval('weight_uom', 0) & Eval('weight_currency', 0)),
+            'readonly': ~(
+                Eval('weight_uom', None)
+                & Eval('weight_currency', None)),
             },
         help="Add price per weight to the carrier service.\n"
         "The first line for which the weight is greater is used.\n"

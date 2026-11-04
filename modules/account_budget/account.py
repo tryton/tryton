@@ -306,13 +306,13 @@ class Budget(BudgetMixin, ModelSQL, ModelView):
     lines = fields.One2Many(
         'account.budget.line', 'budget', "Lines",
         states={
-            'editable': Eval('id', -1) < 0,
+            'editable': Eval('id', -1) >= 0,
             },
         order=[('left', 'ASC'), ('id', 'ASC')])
     root_lines = fields.One2Many(
         'account.budget.line', 'budget', "Lines",
         states={
-            'editable': Eval('id', -1) < 0,
+            'editable': Eval('id', -1) >= 0,
             },
         filter=[
             ('parent', '=', None),
