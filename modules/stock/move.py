@@ -128,6 +128,9 @@ class StockMixin(object):
             'with_childs', len(location_ids) == 1)
         _, operator_, operand = domain
 
+        if operand is None:
+            return [('id', '=', -1)]
+
         with Transaction().set_context(cls._quantity_context(name)):
             if (len(location_ids) == 1
                     and not Transaction().context.get('stock_skip_warehouse')):
