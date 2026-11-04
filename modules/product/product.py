@@ -20,7 +20,7 @@ from trytond.model.exceptions import AccessError
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from trytond.pool import Pool
-from trytond.pyson import Eval, Get, If
+from trytond.pyson import Bool, Eval, Get, If
 from trytond.tools import is_full_text, lstrip_wildcard
 from trytond.transaction import Transaction, inactive_records
 from trytond.wizard import Button, StateTransition, StateView, Wizard
@@ -153,7 +153,7 @@ class Template(
     list_price = fields.MultiValue(fields.Numeric(
             "List Price", digits=price_digits,
             states={
-                'editable': ~Eval('context', {}).get('company'),
+                'editable': Bool(Eval('context', {}).get('company', None)),
                 },
             help="The standard price the product is sold at."))
     list_prices = fields.One2Many(
@@ -515,7 +515,7 @@ class Product(
     list_price = fields.MultiValue(fields.Numeric(
             "List Price", digits=price_digits,
             states={
-                'editable': ~Eval('context', {}).get('company'),
+                'editable': Bool(Eval('context', {}).get('company', None)),
                 },
             help="The standard price the variant is sold at.\n"
             "Leave empty to use the list price of the product."))
@@ -528,7 +528,7 @@ class Product(
     cost_price = fields.MultiValue(fields.Numeric(
             "Cost Price", digits=price_digits,
             states={
-                'editable': ~Eval('context', {}).get('company'),
+                'editable': Bool(Eval('context', {}).get('company', None)),
                 },
             help="The amount it costs to purchase or make the variant, "
             "or carry out the service."))
