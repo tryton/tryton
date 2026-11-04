@@ -75,7 +75,7 @@ class Queue(
                     where=fields.SQL_OPERATORS['in'](
                         file_id_col, deleted_ids)))
             active_ids.update(r[0] for r in cursor)
-            to_remove[prefix].extend(deleted_ids - active_ids)
+            to_remove[prefix or ''].extend(deleted_ids - active_ids)
 
         for store_prefix, to_delete in to_remove.items():
             filestore.delete_many(to_delete, prefix=store_prefix)
