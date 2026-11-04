@@ -282,54 +282,87 @@ class FieldBinaryTestCase(DBTestCase):
     @with_transaction()
     def test_set_to_None(self):
         "Test setting a binary field with a filestore to None"
+        for prefix in ['', 'test']:
+            with self.subTest(prefix=prefix):
+                self._test_set_to_None(prefix)
+
+    def _test_set_to_None(self, prefix=''):
         pool = Pool()
         Queue = pool.get('ir.filestore.queue')
         Binary = pool.get('test.binary_filestorage')
 
-        binary = Binary(deleted_binary=b'foo')
-        binary.save()
-        file_id = binary.deleted_binary_id
+        if prefix:
+            field_name = 'deleted_binary'
+        else:
+            field_name = 'deleted_binary_no_prefix'
+        file_id = getattr(Binary, field_name).file_id
 
-        binary.deleted_binary = None
+        binary = Binary()
+        setattr(binary, field_name, b'foo')
+        binary.save()
+
+        setattr(binary, field_name, None)
         binary.save()
         Queue.remove()
 
         with self.assertRaises(IOError):
-            filestore.get(file_id, prefix='test')
+            filestore.get(file_id, prefix=prefix)
         self.assertEqual(Queue.search([]), [])
 
     @with_transaction()
     def test_delete(self):
         "Test the delete method of binary fields"
+        for prefix in ['', 'test']:
+            with self.subTest(prefix=prefix):
+                self._test_set_to_None(prefix)
+
+    def _test_delete(self, prefix=''):
         pool = Pool()
         Queue = pool.get('ir.filestore.queue')
         Binary = pool.get('test.binary_filestorage')
 
-        binary = Binary(deleted_binary=b'foo')
+        if prefix:
+            field_name = 'deleted_binary'
+        else:
+            field_name = 'deleted_binary_no_prefix'
+        file_id = getattr(Binary, field_name).file_id
+
+        binary = Binary()
+        setattr(binary, field_name, b'foo')
         binary.save()
-        file_id = binary.deleted_binary_id
 
         Binary.delete([binary])
         Queue.remove()
 
         with self.assertRaises(IOError):
-            filestore.get(file_id, prefix='test')
+            filestore.get(file_id, prefix=prefix)
         self.assertEqual(Queue.search([]), [])
 
     @with_transaction()
     def test_delete_copy(self):
         "Test the delete method of copied binary fields"
+        for prefix in ['', 'test']:
+            with self.subTest(prefix=prefix):
+                self._test_set_to_None(prefix)
+
+    def _test_delete_copy(self, prefix=''):
         pool = Pool()
         Queue = pool.get('ir.filestore.queue')
         Binary = pool.get('test.binary_filestorage')
 
-        binary = Binary(deleted_binary=b'foo')
+        if prefix:
+            field_name = 'deleted_binary'
+        else:
+            field_name = 'deleted_binary_no_prefix'
+        file_id = getattr(Binary, field_name).file_id
+
+        binary = Binary()
+        setattr(binary, field_name, b'foo')
         binary.save()
-        file_id = binary.deleted_binary_id
         copy, = Binary.copy([binary])
 
         Binary.delete([binary])
         Queue.remove()
 
-        self.assertTrue(filestore.get(file_id, prefix='test'))
+        self.assertTrue(filestore.get(file_id, prefix=prefix))
         self.assertEqual(Queue.search([]), [])

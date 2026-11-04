@@ -45,6 +45,9 @@ class BinaryFileStorage(ModelSQL):
     deleted_binary = fields.Binary(
         'Deleted Binary', file_id='deleted_binary_id', store_prefix='test')
     deleted_binary_id = fields.Char('Deleted Binary ID')
+    deleted_binary_no_prefix = fields.Binary(
+        "Deleted Binary", file_id='deleted_binary_no_prefix_id')
+    deleted_binary_no_prefix_id = fields.Char("Deleted Binary ID")
 
 
 def register(module):
