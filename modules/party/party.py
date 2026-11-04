@@ -1145,7 +1145,7 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             'SERVICE_UNAVAILABLE',
                             'MS_UNAVAILABLE',
                             'MS_MAX_CONCURRENT_REQ',
-                            'GLOBAL_MS_MAX_CONCURRENT_REQ',
+                            'GLOBAL_MAX_CONCURRENT_REQ',
                             'TIMEOUT',
                             'SERVER_BUSY',
                             }:
