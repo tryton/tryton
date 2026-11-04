@@ -87,12 +87,14 @@ class _CacheMeta(type):
     def __call__(cls, *args, **kwargs):
         inst = super().__call__(*args, **kwargs)
         assert inst._name not in BaseCache._instances, inst._name
-        BaseCache._instances[inst._name] = inst
+        with BaseCache._instances_lock:
+            BaseCache._instances[inst._name] = inst
         return inst
 
 
 class BaseCache(metaclass=_CacheMeta):
     _instances = {}
+    _instances_lock = threading.Lock()
     context_ignored_keys = {
         'client', '_request', '_check_access', '_skip_warnings',
         }
@@ -123,12 +125,13 @@ class BaseCache(metaclass=_CacheMeta):
 
     @classmethod
     def stats(cls):
-        for name, inst in cls._instances.items():
-            yield {
-                'name': name,
-                'hit': inst.hit,
-                'miss': inst.miss,
-                }
+        with cls._instances_lock:
+            for name, inst in cls._instances.items():
+                yield {
+                    'name': name,
+                    'hit': inst.hit,
+                    'miss': inst.miss,
+                    }
 
     def _key(self, key):
         if self.context:
@@ -150,8 +153,9 @@ class BaseCache(metaclass=_CacheMeta):
 
     @classmethod
     def clear_all(cls):
-        for inst in cls._instances.values():
-            inst.clear()
+        with cls._instances_lock:
+            for inst in cls._instances.values():
+                inst.clear()
 
     @classmethod
     def sync(cls, transaction):
@@ -251,8 +255,9 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def _clear_all(cls, dbname):
-        for inst in cls._instances.values():
-            inst._clear(dbname)
+        with cls._instances_lock:
+            for inst in cls._instances.values():
+                inst._clear(dbname)
 
     @classmethod
     def sync(cls, transaction):
@@ -387,10 +392,11 @@ class MemoryCache(BaseCache):
             finally:
                 database.put_connection(conn)
             listener.join()
-        for inst in cls._instances.values():
-            inst._timestamp.pop(dbname, None)
-            inst._database_cache.pop(dbname, None)
-            inst._transaction_lower.pop(dbname, None)
+        with cls._instances_lock:
+            for inst in cls._instances.values():
+                inst._timestamp.pop(dbname, None)
+                inst._database_cache.pop(dbname, None)
+                inst._transaction_lower.pop(dbname, None)
 
     @classmethod
     def refresh_pool(cls, transaction):
