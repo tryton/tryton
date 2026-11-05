@@ -145,10 +145,55 @@ class WizardTestCase(unittest.TestCase):
         "Execute wizard on wrong model"
         pool = Pool()
         Wizard = pool.get('test.test_wizard', type='wizard')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
+        session_id, start_state, end_state = Wizard.create()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                with Transaction().set_context(
+                        active_model='test.test_wizard.start'):
+                    Wizard.execute(session_id, {}, start_state)
+
+    @with_transaction(context={'_check_access': True})
+    def test_execute_without_model(self):
+        "Execute wizard without model"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard_no_model', type='wizard')
+        User = pool.get('res.user')
+
+        user = User(login='foo')
+        user.save()
+        session_id, start_state, end_state = Wizard.create()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                Wizard.execute(session_id, {}, start_state)
+
+    @with_transaction(context={'_check_access': True})
+    def test_execute_without_model_with_group(self):
+        "Execute wizard without model and groups"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard_no_model', type='wizard')
+        User = pool.get('res.user')
+        Group = pool.get('res.group')
+
+        user = User(login='foo', groups=[Group(name="Group")])
+        user.save()
+        session_id, start_state, end_state = Wizard.create()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(AccessError):
+                Wizard.execute(session_id, {}, start_state)
+
+    @with_transaction(context={'_check_access': True})
+    def test_execute_without_model_with_admin(self):
+        "Execute wizard without model"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard_no_model', type='wizard')
 
         session_id, start_state, end_state = Wizard.create()
 
-        with self.assertRaises(AccessError):
-            with Transaction().set_context(
-                    active_model='test.test_wizard.start'):
-                Wizard.execute(session_id, {}, start_state)
+        Wizard.execute(session_id, {}, start_state)
