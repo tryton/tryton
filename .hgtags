@@ -10171,3 +10171,4 @@ d1e05ef188defe39d18e56a6ab378f27272162df trytond-7.8.19
 703cb8ebecbfb32eef69cc12242275dc1ff4e065 stock_product_location-7.8.1
 84488c4b400d1ffcbdde8c8424aac08566b8cab4 production-7.8.5
 0bbf82aa22eaa83b471000c81d3d472d24195c2a inbound_email-7.8.2
+35364c4d76cc657055f716d74558e8e462af55de edocument_ubl-7.8.12
