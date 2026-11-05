@@ -264,7 +264,7 @@ class Wizard(URLMixin, PoolBase):
                     ModelAccess.check(model, 'read')
                 models = ActionWizard.get_models(
                     cls.__name__, action_id=context.get('action_id'))
-                if model and models and model not in models:
+                if models and (not model or model not in models):
                     groups = Group.browse(User.get_groups())
                     raise AccessError(
                         gettext(
@@ -293,6 +293,12 @@ class Wizard(URLMixin, PoolBase):
                             or Model.write.__func__ != ModelSQL.write.__func__
                             ):
                         ModelAccess.check(model, 'write')
+
+                if not models and not wizard_groups:
+                    raise AccessError(
+                        gettext(
+                            'ir.msg_access_wizard_error',
+                            wizard=cls.__name__))
 
             if model:
                 ids = context.get('active_ids') or []

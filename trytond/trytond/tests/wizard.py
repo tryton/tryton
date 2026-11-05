@@ -47,10 +47,15 @@ class TestWizard(Wizard):
         return 'end'
 
 
+class TestWizardNoModel(TestWizard):
+    __name__ = 'test.test_wizard_no_model'
+
+
 def register(module):
     Pool.register(
         TestWizardStart,
         module=module, type_='model')
     Pool.register(
         TestWizard,
+        TestWizardNoModel,
         module=module, type_='wizard')
