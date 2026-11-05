@@ -1,3 +1,4 @@
+* Only permit administrators to execute wizards without models or groups (issue15205)
 
 Version 8.2.1 - 2026-10-15
 --------------------------
