@@ -249,11 +249,16 @@ class Wizard(URLMixin, PoolBase):
         ActionWizard = pool.get('ir.action.wizard')
         User = pool.get('res.user')
         Group = pool.get('res.group')
+        ModelData = pool.get('ir.model.data')
         transaction = Transaction()
         context = transaction.context
 
         if transaction.user == 0:
             return
+
+        admin_group = ModelData.get_id('res.group_admin')
+        groups = set(User.get_groups())
+        is_admin = admin_group in groups
 
         with check_access():
             model = context.get('active_model')
@@ -263,7 +268,7 @@ class Wizard(URLMixin, PoolBase):
                 ModelAccess.check(model, 'read')
             models = ActionWizard.get_models(
                 cls.__name__, action_id=context.get('action_id'))
-            if model and models and model not in models:
+            if not is_admin and models and (not model or model not in models):
                 groups = Group.browse(User.get_groups())
                 raise AccessError(
                     gettext(
@@ -273,7 +278,6 @@ class Wizard(URLMixin, PoolBase):
                     gettext(
                         'ir.msg_context_groups',
                         groups=', '.join(g.rec_name for g in groups)))
-            groups = set(User.get_groups())
             wizard_groups = ActionWizard.get_groups(cls.__name__,
                 action_id=context.get('action_id'))
             if wizard_groups:
@@ -290,6 +294,12 @@ class Wizard(URLMixin, PoolBase):
                 if (not callable(getattr(Model, 'table_query', None))
                         or Model.write.__func__ != ModelSQL.write.__func__):
                     ModelAccess.check(model, 'write')
+
+            if not is_admin and not models and not wizard_groups:
+                raise AccessError(
+                    gettext(
+                        'ir.msg_access_wizard_error',
+                        wizard=cls.__name__))
 
             if model:
                 ids = context.get('active_ids') or []
