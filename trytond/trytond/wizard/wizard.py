@@ -304,7 +304,6 @@ class Wizard(URLMixin, PoolBase):
     def create(cls):
         "Create a session"
         Session = Pool().get('ir.session.wizard')
-        cls.check_access()
         return (Session.create([{}])[0].id, cls.start_state, cls.end_state)
 
     @classmethod
