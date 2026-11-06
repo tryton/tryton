@@ -416,8 +416,7 @@ class CreateMove(Wizard):
         return action, {'res_id': move.id}
 
     def end(self):
-        if self.model and self.model.__name__ == 'account.move.line':
-            return 'reload'
+        return 'reload'
 
 
 class CreateMoveTemplate(ModelView):
