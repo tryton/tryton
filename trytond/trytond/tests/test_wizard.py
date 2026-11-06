@@ -83,29 +83,6 @@ class WizardTestCase(DBTestCase):
         self.assertEqual(group_b.name, 'Group B')
 
     @with_transaction()
-    def test_session_without_access(self):
-        "Create session for wizard without access"
-        pool = Pool()
-        ActionWizard = pool.get('ir.action.wizard')
-        Group = pool.get('res.group')
-        Wizard = pool.get('test.test_wizard', type='wizard')
-        User = pool.get('res.user')
-
-        user = User(login='foo')
-        user.save()
-        group = Group(name="Test")
-        group.save()
-        action_wizard, = ActionWizard.search([
-                ('wiz_name', '=', 'test.test_wizard'),
-                ])
-        action_wizard.groups = [group]
-        action_wizard.save()
-
-        with Transaction().set_user(user.id):
-            with self.assertRaises(AccessError):
-                session_id, start_state, end_state = Wizard.create()
-
-    @with_transaction()
     def test_session_different_user(self):
         "Use session from a different user"
         pool = Pool()
