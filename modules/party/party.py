@@ -1117,7 +1117,10 @@ class Identifier(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
                             now - config.identifier_eu_vat_validation_period),
                         ],
                     ],
-                order=[])
+                limit=20,
+                order=[
+                    ('eu_vat_validated_at', 'ASC NULLS FIRST'),
+                    ])
         if not identifiers:
             return
         failed, succeeded = [], []
