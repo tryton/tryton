@@ -37,6 +37,11 @@ Class attributes are:
    deletion of the wizard and it may return one of the :ref:`client side action
    keywords <topics-views-client-actions>`.
 
+   .. warning::
+      The wizard's access rights do not apply to the execution of the end
+      method.
+      No ``active_`` keywords are set in the context either.
+
 .. attribute:: Wizard._readonly
 
    A boolean to set :attr:`trytond.transaction.Transaction.readonly` when
@@ -84,9 +89,17 @@ Class methods are:
    Create a session for the wizard and returns a tuple containing the session
    id, the starting and ending state.
 
+   .. warning::
+      The wizard's access rights do not apply to the creation of a session.
+      No ``active_`` keywords are set in the context either.
+
 .. classmethod:: Wizard.delete(session_id)
 
-   Delete the session.
+   Delete the session and run the :attr:`Wizard.end_state` method if exists.
+
+   .. warning::
+      The wizard's access rights do not apply to the creation of a session.
+      No ``active_`` keywords are set in the context either.
 
 .. classmethod:: Wizard.execute(session_id, data, state_name)
 
