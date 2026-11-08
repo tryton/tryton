@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -23,39 +23,6 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
-
-Create account admin user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> account_admin_user = User()
-    >>> account_admin_user.name = 'Account Admin'
-    >>> account_admin_user.login = 'account_admin'
-    >>> account_admin_group, = Group.find([
-    ...         ('name', '=', 'Account Administration'),
-    ...         ])
-    >>> account_admin_user.groups.append(account_admin_group)
-    >>> account_admin_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = 'Account'
-    >>> account_user.login = 'account'
-    >>> account_group, = Group.find([
-    ...         ('name', '=', 'Account'),
-    ...         ])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
-
-Create dunning user::
-
-    >>> dunning_user = User()
-    >>> dunning_user.name = 'Dunning'
-    >>> dunning_user.login = 'dunning'
-    >>> dunning_group, = Group.find([('name', '=', 'Dunning')])
-    >>> dunning_user.groups.append(dunning_group)
-    >>> dunning_user.save()
 
 Create fiscal year::
 
@@ -73,7 +40,6 @@ Create chart of accounts::
 
 Create dunning procedure::
 
-    >>> set_user(account_admin_user)
     >>> Procedure = Model.get('account.dunning.procedure')
     >>> procedure = Procedure(name='Procedure')
     >>> level = procedure.levels.new()
@@ -96,7 +62,6 @@ Create parties::
 
 Create some moves::
 
-    >>> set_user(account_user)
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
     >>> journal_revenue, = Journal.find([
@@ -151,7 +116,6 @@ Create some moves::
 
 Create dunnings on 4 days::
 
-    >>> set_user(dunning_user)
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + relativedelta(days=4)
@@ -240,7 +204,6 @@ Create dunnings on 30 days::
 
 Pay dunning::
 
-    >>> set_user(account_user)
     >>> MoveLine = Model.get('account.move.line')
     >>> move = Move()
     >>> move.period = period
@@ -257,13 +220,11 @@ Pay dunning::
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [MoveLine(dunning.line.id), reconcile2])
-    >>> set_user(dunning_user)
     >>> Dunning.find([])
     []
 
 Create dunnings on 50 days::
 
-    >>> set_user(dunning_user)
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + relativedelta(days=50)
     >>> create_dunning.execute('create_')
