@@ -28,6 +28,7 @@ except ImportError:
     from werkzeug.wsgi import SharedDataMiddleware
 
 from trytond import backend, config, security
+from trytond.exceptions import TrytonException
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.wrappers import (
     BaseResponse, HTTPStatus, Request, Response, abort, exceptions)
@@ -112,6 +113,14 @@ class TrytondWSGI(object):
         return wrapper
 
     def dispatch_request(self, request):
+        def handle_exception(e):
+            response = e
+            for error_handler in self.error_handlers:
+                rv = error_handler(self, request, e)
+                if isinstance(rv, BaseResponse):
+                    response = rv
+            return response
+
         adapter = self.url_map.bind_to_environ(request.environ)
         try:
             endpoint, request.view_args = adapter.match()
@@ -123,14 +132,15 @@ class TrytondWSGI(object):
                 max_size = config.getint('request', 'max_size')
             request.max_content_length = max_size
             return endpoint(request, **request.view_args)
-        except exceptions.HTTPException as e:
+        except (TrytonException, exceptions.HTTPException) as e:
             logger.debug(
                 "Exception when processing %s", request, exc_info=True)
-            return e
+            return handle_exception(e)
         except backend.DatabaseOperationalError as e:
             logger.debug(
                 "Exception when processing %s", request, exc_info=True)
-            return exceptions.ServiceUnavailable(description=str(e))
+            return handle_exception(
+                exceptions.ServiceUnavailable(description=str(e)))
         except Exception as e:
             logger.exception("Exception when processing %s", request)
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
@@ -139,12 +149,7 @@ class TrytondWSGI(object):
                 for path in sys.path:
                     tb_s = tb_s.replace(path, '')
                 e.__format_traceback__ = tb_s
-            response = e
-            for error_handler in self.error_handlers:
-                rv = error_handler(self, request, e)
-                if isinstance(rv, BaseResponse):
-                    response = rv
-            return response
+            return handle_exception(e)
 
     def make_response(self, request, data):
         for cls in self.protocols:
