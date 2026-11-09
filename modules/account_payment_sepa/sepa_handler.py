@@ -72,17 +72,10 @@ class CAMT054(SEPAHandler):
 
     def get_payments(self, transaction):
         tag = etree.QName(transaction)
-        instr_id = transaction.find(
-            './/{%s}InstrId' % tag.namespace)
         end_to_end_id = transaction.find(
             './/{%s}EndToEndId' % tag.namespace)
         payment_kind = self.get_payment_kind(transaction)
-        if instr_id is not None:
-            return self.Payment.search([
-                    ('sepa_instruction_id', '=', instr_id.text),
-                    ('kind', '=', payment_kind),
-                    ])
-        elif end_to_end_id is not None:
+        if end_to_end_id is not None:
             return self.Payment.search([
                     ('sepa_end_to_end_id', '=', end_to_end_id.text),
                     ('kind', '=', payment_kind),
