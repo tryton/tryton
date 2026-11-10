@@ -771,12 +771,24 @@ class Shop(metaclass=PoolMeta):
                 QUERY_ORDERS % {
                     'query': query,
                     'fields': graphql.selection(fields),
-                    }).data['orders']
+                    }).data['orders']['nodes']
+
+            # Shopify order by ID using the createAt first
+            # so we must deduplicate existing ids.
+            order_ids = [gid2id(o['id']) for o in orders]
+            existing_sales = Sale.search([
+                    ('web_shop', '=', shop.id),
+                    ('shopify_identifier', 'in', order_ids),
+                    ])
+            existing_order_ids = {s.shopify_identifier for s in existing_sales}
+            orders = [
+                o for o in orders if gid2id(o['id']) not in existing_order_ids]
+
             sales = []
-            for order in orders['nodes']:
+            for order in orders:
                 sales.append(Sale.get_from_shopify(shop, order))
             Sale.save(sales)
-            for sale, order in zip(sales, orders['nodes']):
+            for sale, order in zip(sales, orders):
                 total_price = Decimal(
                     order['currentTotalPriceSet']['presentmentMoney'][
                         'amount'])
@@ -787,7 +799,7 @@ class Shop(metaclass=PoolMeta):
                 s for s in sales if s.party != s.web_shop.guest_party]
             if to_quote:
                 Sale.quote(to_quote)
-            for sale, order in zip(sales, orders['nodes']):
+            for sale, order in zip(sales, orders):
                 if sale.state != 'draft':
                     Payment.get_from_shopify(sale, order)
             Sale.payment_confirm(sales)
