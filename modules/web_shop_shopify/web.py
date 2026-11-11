@@ -4,7 +4,7 @@ import datetime as dt
 import logging
 from collections import defaultdict
 from decimal import Decimal
-from itertools import groupby
+from itertools import groupby, islice
 from operator import attrgetter
 
 from shopify_app import admin_graphql_request
@@ -26,6 +26,14 @@ from .common import IdentifierMixin, IdentifiersMixin, gid2id, id2gid
 from .exceptions import (
     GraphQLException, ShopifyCredentialWarning, ShopifyError)
 from .product import QUERY_PRODUCT
+
+try:
+    from itertools import batched
+except ImportError:
+    def batched(iterable, size):
+        iterable = iter(iterable)
+        while batch := tuple(islice(iterable, size)):
+            yield batch
 
 logger = logging.getLogger(__name__)
 
@@ -157,6 +165,17 @@ mutation collectionDelete($input: CollectionDeleteInput!) {
 QUERY_ORDERS = '''\
 query GetOrders {
     orders(first: 20, query: "%(query)s", sortKey: ID) %(fields)s
+}'''
+
+QUERY_ORDERS_CURSOR = '''\
+query GetOrders($cursor: String) {
+    orders(first: 20, query: "%(query)s", sortKey: ID, after: $cursor) {
+        nodes %(fields)s
+        pageInfo {
+            hasNextPage
+            endCursor
+        }
+    }
 }'''
 
 
@@ -749,7 +768,7 @@ class Shop(metaclass=PoolMeta):
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
-        fields = {'nodes': Sale.shopify_fields()}
+        fields = Sale.shopify_fields()
         cls.lock(shops)
         for shop in shops:
             last_sales = Sale.search([
@@ -767,42 +786,44 @@ class Shop(metaclass=PoolMeta):
                 query = f'-status:cancelled AND id:>{last_order_id}'
             else:
                 query = '-status:cancelled'
-            orders = shop.shopify_request(
-                QUERY_ORDERS % {
+            orders = graphql.iterate(
+                shop, QUERY_ORDERS_CURSOR % {
                     'query': query,
                     'fields': graphql.selection(fields),
-                    }).data['orders']['nodes']
+                    }, {}, 'orders')
+            for orders in batched(orders, 20):
+                # Shopify order by ID using the createAt first
+                # so we must deduplicate existing ids.
+                order_ids = [gid2id(o['id']) for o in orders]
+                existing_sales = Sale.search([
+                        ('web_shop', '=', shop.id),
+                        ('shopify_identifier', 'in', order_ids),
+                        ])
+                existing_order_ids = {
+                    s.shopify_identifier for s in existing_sales}
+                orders = [
+                    o for o in orders
+                    if gid2id(o['id']) not in existing_order_ids]
 
-            # Shopify order by ID using the createAt first
-            # so we must deduplicate existing ids.
-            order_ids = [gid2id(o['id']) for o in orders]
-            existing_sales = Sale.search([
-                    ('web_shop', '=', shop.id),
-                    ('shopify_identifier', 'in', order_ids),
-                    ])
-            existing_order_ids = {s.shopify_identifier for s in existing_sales}
-            orders = [
-                o for o in orders if gid2id(o['id']) not in existing_order_ids]
-
-            sales = []
-            for order in orders:
-                sales.append(Sale.get_from_shopify(shop, order))
-            Sale.save(sales)
-            for sale, order in zip(sales, orders):
-                total_price = Decimal(
-                    order['currentTotalPriceSet']['presentmentMoney'][
-                        'amount'])
-                sale.shopify_tax_adjustment = (
-                    total_price - sale.total_amount)
-            Sale.save(sales)
-            to_quote = [
-                s for s in sales if s.party != s.web_shop.guest_party]
-            if to_quote:
-                Sale.quote(to_quote)
-            for sale, order in zip(sales, orders):
-                if sale.state != 'draft':
-                    Payment.get_from_shopify(sale, order)
-            Sale.payment_confirm(sales)
+                sales = []
+                for order in orders:
+                    sales.append(Sale.get_from_shopify(shop, order))
+                Sale.save(sales)
+                for sale, order in zip(sales, orders):
+                    total_price = Decimal(
+                        order['currentTotalPriceSet']['presentmentMoney'][
+                            'amount'])
+                    sale.shopify_tax_adjustment = (
+                        total_price - sale.total_amount)
+                Sale.save(sales)
+                to_quote = [
+                    s for s in sales if s.party != s.web_shop.guest_party]
+                if to_quote:
+                    Sale.quote(to_quote)
+                for sale, order in zip(sales, orders):
+                    if sale.state != 'draft':
+                        Payment.get_from_shopify(sale, order)
+                Sale.payment_confirm(sales)
 
     @classmethod
     def shopify_update_order(cls, shops=None):
