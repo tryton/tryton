@@ -235,6 +235,8 @@ class ShipmentOut_PackageShipping(metaclass=PoolMeta):
         if fulfillment and self.packages:
             numbers, urls = [], []
             fulfillment['trackingInfo'] = {
+                'company': (
+                    self.carrier.party.rec_name if self.carrier else ''),
                 'numbers': numbers,
                 'urls': urls,
                 }
