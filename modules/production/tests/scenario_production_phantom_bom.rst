@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
 
-    >>> from proteus import Model
+    >>> from proteus import Model, Wizard
     >>> from trytond.modules.company.tests.tools import create_company, get_company
     >>> from trytond.tests.tools import activate_modules
 
@@ -147,3 +147,12 @@ Create Bill of Material using Phantom BoM::
 
     >>> table.boms.append(ProductBom(bom=bom))
     >>> table.save()
+
+Open the BOM tree of the product::
+
+    >>> bom_tree = Wizard('production.bom.tree.open', [table])
+    >>> bom_tree.form.quantity = 2
+    >>> bom_tree.execute('tree')
+    >>> table_tree, = bom_tree.form.bom_tree
+    >>> [(c.product.name, c.quantity) for c in table_tree.childs]
+    [('top', 2.0), ('leg', 8.0), ('foot', 8.0)]
