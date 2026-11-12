@@ -763,11 +763,24 @@ class Shop(metaclass=PoolMeta):
         pool = Pool()
         Sale = pool.get('sale.sale')
         Payment = pool.get('account.payment')
+        CronLog = pool.get('ir.cron.log')
         context = Transaction().context
         if shops is None:
             shops = cls.search([
                     ('type', '=', 'shopify'),
                     ])
+        created_at = None
+        if method := context.get('_cron'):
+            logs = CronLog.search([
+                    ('cron.method', '=', method),
+                    ],
+                order=[('started', 'DESC')],
+                limit=1)
+            if logs:
+                log, = logs
+                created_at = log.started
+                # add small gap to catch late publication
+                created_at -= dt.timedelta(seconds=60)
         fields = Sale.shopify_fields()
         cls.lock(shops)
         for shop in shops:
@@ -782,6 +795,10 @@ class Shop(metaclass=PoolMeta):
             if pool.test and 'shopify_orders' in context:
                 query = ' OR '.join(
                     f'id:{id}' for id in context['shopify_orders'])
+            elif created_at is not None and last_order_id:
+                query = (
+                    '-status:cancelled '
+                    f"AND created_at:>='{created_at.isoformat()}Z'")
             elif last_order_id:
                 query = f'-status:cancelled AND id:>{last_order_id}'
             else:
