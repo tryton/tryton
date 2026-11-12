@@ -50,9 +50,8 @@ class Invoice(metaclass=PoolMeta):
         watermark = PdfReader(BytesIO(watermark))
         watermark = watermark.pages[0]
         for i in range(len(invoice.pages)):
-            page = invoice.pages[i]
+            page = output.add_page(invoice.pages[i])
             page.merge_page(watermark)
-            output.add_page(page)
         data = BytesIO()
         output.write(data)
         return data.getvalue()
