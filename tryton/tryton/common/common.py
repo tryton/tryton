@@ -1164,7 +1164,7 @@ class Login(object):
                     message(
                         _('Too many requests. Try again later.'),
                         msg_type=Gtk.MessageType.ERROR)
-                    continue
+                    raise TrytonError('QueryCanceled')
                 elif (exception.faultCode
                         == str(int(HTTPStatus.NOT_FOUND))):
                     message(_("Not Found."), msg_type=Gtk.MessageType.ERROR)

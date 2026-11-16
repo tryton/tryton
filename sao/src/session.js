@@ -487,7 +487,7 @@
                     } else if (data.error[0].startsWith('429')) {
                         Sao.common.message.run(
                             Sao.i18n.gettext('Too many requests. Try again later.'),
-                            'tryton-error').always(dfd.resolve);
+                            'tryton-error').always(dfd.reject);
                     } else if (data.error[0].startsWith('404')) {
                         Sao.common.message.run(
                             Sao.i18n.gettext("Not found."),
@@ -517,7 +517,7 @@
                 } else if (query.status == 429) {
                     Sao.common.message.run(
                         Sao.i18n.gettext('Too many requests. Try again later.'),
-                        'tryton-error').always(dfd.resolve);
+                        'tryton-error').always(dfd.reject);
                 } else if (query.status == 404) {
                     Sao.common.message.run(
                         Sao.i18n.gettext("Not found."),
