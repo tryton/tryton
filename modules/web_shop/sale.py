@@ -18,7 +18,11 @@ from trytond.pyson import Bool, Eval
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
-    web_shop = fields.Many2One('web.shop', "Web Shop", ondelete='RESTRICT')
+    web_shop = fields.Many2One(
+        'web.shop', "Web Shop", ondelete='RESTRICT',
+        states={
+            'readonly': Eval('id', -1) >= 0,
+            })
     web_id = fields.Char(
         "Web ID", strip=False,
         states={
