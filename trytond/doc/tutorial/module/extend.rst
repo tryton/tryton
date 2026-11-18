@@ -62,6 +62,31 @@ The ``__setup__`` class method is added to the :file:`party.py` file:
    You must always call the ``super()`` method when extending an existing
    method.
 
+Extend a method of the Party model
+----------------------------------
+
+To do so, define a method with the same name on the class.
+This allows your module to add behavior to the model from another module.
+
+For example, override the :meth:`~trytond.model.ModelStorage.copy` method to
+clear opportunities when duplicating parties.
+The :file:`party.py` file becomes:
+
+.. code-block:: python
+
+    class Party(metaclass=PoolMeta):
+        ...
+
+        @classmethod
+        def copy(cls, records, default=None):
+            default = {} if default is None else default.copy()
+            default.setdefault('opportunities', None)
+            return super().copy(records, default=default)
+
+This method updates the default values by including the opportunities field.
+Then the ``super()`` method is called to copy the records with the updated
+``default``.
+
 Extend the Party view
 ---------------------
 
