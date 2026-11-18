@@ -5592,8 +5592,8 @@ function eval_pyson(value){
                         }
                     }
                 }
+                this._set_button_sensitive();
             });
-            this._set_button_sensitive();
             return prm;
         },
         _update_completion: function(text) {
