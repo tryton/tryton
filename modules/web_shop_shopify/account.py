@@ -112,22 +112,34 @@ class Payment(IdentifierMixin, metaclass=PoolMeta):
                 captured[payment] += Decimal(
                     transaction['amountSet']['presentmentMoney']['amount'])
             elif transaction['kind'] == 'CAPTURE':
-                payment = id2payments[
-                    gid2id(transaction['parentTransaction']['id'])]
+                try:
+                    payment = id2payments[
+                        gid2id(transaction['parentTransaction']['id'])]
+                except KeyError:
+                    # the parent transaction was not successful
+                    continue
                 id2payments[gid2id(transaction['id'])] = payment
                 captured[payment] += Decimal(
                     transaction['amountSet']['presentmentMoney']['amount'])
             elif transaction['kind'] == 'VOID':
-                payment = id2payments[
-                    gid2id(transaction['parentTransaction']['id'])]
+                try:
+                    payment = id2payments[
+                        gid2id(transaction['parentTransaction']['id'])]
+                except KeyError:
+                    # the parent transaction was not successful
+                    continue
                 voided[payment] += Decimal(
                     transaction['amountSet']['presentmentMoney']['amount'])
             elif transaction['kind'] == 'REFUND':
                 if not transaction['parentTransaction']:
                     payment = id2payments[gid2id(transaction['id'])]
                 else:
-                    payment = id2payments[
-                        gid2id(transaction['parentTransaction']['id'])]
+                    try:
+                        payment = id2payments[
+                            gid2id(transaction['parentTransaction']['id'])]
+                    except KeyError:
+                        # the parent transaction was not successful
+                        continue
                     captured[payment] -= Decimal(
                         transaction['amountSet']['presentmentMoney']['amount'])
                 refunded[payment] += Decimal(
