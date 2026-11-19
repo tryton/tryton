@@ -326,7 +326,7 @@ class ShipmentCost(Workflow, ModelSQL, ModelView, ChatMixin):
         pool = Pool()
         Config = pool.get('account.configuration')
         values = super().preprocess_values(mode, values)
-        if values.get('number') is None:
+        if mode == 'create' and values.get('number') is None:
             config = Config(1)
             company_id = values.get('company', cls.default_company())
             if company_id is not None:
