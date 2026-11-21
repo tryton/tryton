@@ -1,3 +1,4 @@
+* Prevent users from setting companies and employees as their preferences (issue15256)
 
 Version 7.0.4 - 2026-07-01
 --------------------------

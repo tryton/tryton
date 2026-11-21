@@ -111,6 +111,7 @@ class User(metaclass=PoolMeta):
         cls._context_fields.insert(0, 'company')
         cls._context_fields.insert(0, 'employee')
         cls._context_fields.insert(0, 'company_filter')
+        cls._forbidden_fields.update({'companies', 'employees'})
 
     @classmethod
     def __register__(cls, module):
@@ -237,16 +238,17 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def read(cls, ids, fields_names):
+        transaction = Transaction()
+        user_id = transaction.user
+        context = transaction.context
         user_id = Transaction().user
-        if user_id == 0 and 'user' in Transaction().context:
-            user_id = Transaction().context['user']
+        if user_id == 0 and 'user' in context:
+            user_id = context['user']
         result = super(User, cls).read(ids, fields_names)
         if (fields_names
-                and ((
-                        'company' in fields_names
-                        and 'company' in Transaction().context)
-                    or ('employee' in fields_names
-                        and 'employee' in Transaction().context))):
+                and (('company' in fields_names and 'company' in context)
+                    or ('employee' in fields_names and 'employee' in context))
+                ):
             values = None
             if int(user_id) in ids:
                 for vals in result:
@@ -254,32 +256,26 @@ class User(metaclass=PoolMeta):
                         values = vals
                         break
             if values:
-                if ('company' in fields_names
-                        and 'company' in Transaction().context):
+                if 'company' in fields_names and 'company' in context:
                     companies = values.get('companies')
                     if not companies:
                         companies = cls.read([user_id],
                             ['companies'])[0]['companies']
-                    company_id = Transaction().context['company']
+                    company_id = context['company']
                     if ((company_id and company_id in companies)
                             or not company_id
-                            or Transaction().user == 0):
+                            or user_id == 0):
                         values['company'] = company_id
-                    else:
-                        values['company'] = None
-                if ('employee' in fields_names
-                        and 'employee' in Transaction().context):
+                if 'employee' in fields_names and 'employee' in context:
                     employees = values.get('employees')
                     if not employees:
                         employees = cls.read([user_id],
                             ['employees'])[0]['employees']
-                    employee_id = Transaction().context['employee']
+                    employee_id = context['employee']
                     if ((employee_id and employee_id in employees)
                             or not employee_id
-                            or Transaction().user == 0):
+                            or user_id == 0):
                         values['employee'] = employee_id
-                    else:
-                        values['employee'] = None
         return result
 
     @classmethod

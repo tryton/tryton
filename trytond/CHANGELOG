@@ -1,3 +1,4 @@
+* Define the forbidden fields that cannot be set as preferences (issue15256)
 
 Version 7.0.61 - 2026-11-06
 ---------------------------

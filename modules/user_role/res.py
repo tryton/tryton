@@ -52,6 +52,7 @@ class User(metaclass=PoolMeta):
         cls.groups.states['readonly'] = group_readonly
 
         cls._context_fields.append('roles')
+        cls._forbidden_fields.add('roles')
 
     @classmethod
     def create(cls, vlist):
