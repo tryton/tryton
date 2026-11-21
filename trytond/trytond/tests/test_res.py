@@ -97,5 +97,27 @@ class ResTestCase(ModuleTestCase):
 
         self.assertNotEqual(key1, key2)
 
+    @with_transaction()
+    def test_user_set_preferences(self):
+        "Test set preferences of user"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(login='user', administrator=False)
+        user.save()
+
+        with Transaction().set_user(user.id):
+            User.set_preferences({
+                    'login': 'foo',
+                    'name': "User",
+                    'language': 'en',
+                    'administrator': True,
+                    })
+
+        self.assertEqual(user.login, 'user')
+        self.assertEqual(user.name, "User")
+        self.assertEqual(user.language.code, 'en')
+        self.assertEqual(user.administrator, False)
+
 
 del ModuleTestCase

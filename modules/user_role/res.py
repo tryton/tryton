@@ -64,6 +64,7 @@ class User(metaclass=PoolMeta):
         cls.groups.states['readonly'] = group_readonly
 
         cls._context_fields.append('roles')
+        cls._forbidden_fields.add('roles')
 
     @fields.depends('administrator', 'roles')
     def on_change_administrator(self):
