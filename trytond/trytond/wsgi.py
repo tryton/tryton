@@ -106,6 +106,7 @@ class TrytondWSGI(object):
         try:
             endpoint, request.view_args = adapter.match()
             max_request_size = getattr(endpoint, 'max_request_size', None)
+            request.max_content_length = max_request_size
             self.check_request_size(request, max_request_size)
             return endpoint(request, **request.view_args)
         except exceptions.HTTPException as e:

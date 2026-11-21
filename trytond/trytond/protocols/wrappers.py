@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import base64
 import gzip
+import io
 import logging
 import time
 from functools import wraps
-from io import BytesIO
 
 try:
     from http import HTTPStatus
@@ -14,7 +14,7 @@ except ImportError:
 
 from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
-from werkzeug.exceptions import abort
+from werkzeug.exceptions import abort, RequestEntityTooLarge
 from werkzeug.utils import redirect
 from werkzeug.wrappers import Request as _Request
 from werkzeug.wrappers import Response
@@ -72,11 +72,12 @@ class Request(_Request):
     @property
     def decoded_data(self):
         if self.content_encoding == 'gzip':
-            if self.user_id:
-                zipfile = gzip.GzipFile(fileobj=BytesIO(self.data), mode='rb')
-                return zipfile.read()
-            else:
-                abort(HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
+            with gzip.GzipFile(
+                    fileobj=io.BytesIO(self.data), mode='rb') as stream:
+                data = stream.read(self.max_content_length + 1)
+            if len(data) > self.max_content_length:
+                raise RequestEntityTooLarge()
+            return data
         else:
             return self.data
 
