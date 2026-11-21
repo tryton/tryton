@@ -1,3 +1,4 @@
+* Define the forbidden fields that cannot be set as preferences (issue15256)
 * Add scheduled task to synchronize local translations
 * Support creating and writing translated fields in multiple languages at once
 * Support reading translated fields in any suffixed language

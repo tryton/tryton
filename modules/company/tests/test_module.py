@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from unittest.mock import patch
 
 from trytond.model import ModelStorage, ModelView
+from trytond.model.exceptions import DomainValidationError
 from trytond.modules.company.model import CompanyMultiValueMixin
 from trytond.modules.currency.tests import add_currency_rate, create_currency
 from trytond.modules.party.tests import (
@@ -224,7 +225,7 @@ class CompanyTestCase(
 
             with transaction.set_context(company=company3.id):
                 user1, user2 = User.browse([user1.id, user2.id])
-                self.assertEqual(user1.company, None)
+                self.assertEqual(user1.company, company1)
                 self.assertEqual(user2.company, company2)
 
     @with_transaction()
@@ -243,6 +244,34 @@ class CompanyTestCase(
             with Transaction().set_context(company=company.id):
                 root = User(0)
                 self.assertEqual(root.company, company)
+
+    @with_transaction()
+    def test_user_set_preferences(self):
+        "Test set preferences of user"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        company1 = create_company()
+        company2 = create_company()
+
+        employee1 = create_employee(company1, "Jim Halper")
+        employee2 = create_employee(company2, "Pam Bessly")
+
+        user = User(login='user')
+        user.companies = [company1]
+        user.company = company1
+        user.employees = [employee1]
+        user.employee = employee1
+        user.save()
+
+        with Transaction().set_user(user.id):
+            with self.assertRaises(DomainValidationError):
+                User.set_preferences({
+                        'companies': [('add', [company2.id])],
+                        'company': company2.id,
+                        'employees': [('add', [employee2.id])],
+                        'employee': employee2.id,
+                        })
 
     @with_transaction()
     def test_user_employee(self):
@@ -290,7 +319,7 @@ class CompanyTestCase(
 
             with transaction.set_context(employee=employee3.id):
                 user1, user2 = User.browse([user1.id, user2.id])
-                self.assertEqual(user1.employee, None)
+                self.assertEqual(user1.employee, employee1)
                 self.assertEqual(user2.employee, employee2)
 
     @with_transaction()
