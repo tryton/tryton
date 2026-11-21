@@ -3,6 +3,7 @@
 import base64
 import collections
 import gzip
+import io
 import logging
 import time
 import zlib
@@ -15,7 +16,7 @@ except ImportError:
 
 from werkzeug import exceptions
 from werkzeug.datastructures import Authorization
-from werkzeug.exceptions import abort
+from werkzeug.exceptions import RequestEntityTooLarge, abort
 from werkzeug.utils import redirect, send_file
 from werkzeug.wrappers import Request as BaseRequest
 from werkzeug.wrappers import Response as BaseResponse
@@ -113,10 +114,12 @@ class Request(BaseRequest):
     @property
     def decoded_data(self):
         if self.content_encoding == 'gzip':
-            if self.user_id:
-                return gzip.decompress(self.data)
-            else:
-                abort(HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
+            with gzip.GzipFile(
+                    fileobj=io.BytesIO(self.data), mode='rb') as stream:
+                data = stream.read(self.max_content_length + 1)
+            if len(data) > self.max_content_length:
+                raise RequestEntityTooLarge()
+            return data
         else:
             return self.data
 
