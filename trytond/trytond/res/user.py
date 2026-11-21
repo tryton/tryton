@@ -193,6 +193,9 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             'language_direction',
             'groups',
         ]
+        cls._forbidden_fields = {
+            'groups',
+            }
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -541,27 +544,29 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         '''
         pool = Pool()
         Lang = pool.get('ir.lang')
+        transaction = Transaction()
+
         values_clean = values.copy()
         fields = cls._preferences_fields + cls._context_fields
-        user_id = Transaction().user
+        user_id = transaction.user
         user = cls(user_id)
-        for field in values:
-            if field not in fields or field == 'groups':
+        context = {}
+        for field, value in values.items():
+            if (field not in fields
+                    or field in cls._forbidden_fields):
                 del values_clean[field]
+            if field in cls._context_fields:
+                context[field] = value
             if field == 'language':
                 langs = Lang.search([
-                    ('code', '=', values['language']),
+                    ('code', '=', value),
                     ])
                 if langs:
                     values_clean['language'] = langs[0].id
                 else:
                     del values_clean['language']
         # Set new context to write as validation could depend on it
-        context = {}
-        for name in cls._context_fields:
-            if name in values:
-                context[name] = values[name]
-        with Transaction().set_context(context):
+        with transaction.set_context(context):
             cls.write([user], values_clean)
 
     @classmethod
