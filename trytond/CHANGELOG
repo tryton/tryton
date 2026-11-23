@@ -1,3 +1,4 @@
+* Forbid to read the user's reset password (issue15258)
 * Limit the decompressed size of request (issue15257)
 * Define the forbidden fields that cannot be set as preferences (issue15256)
 * Add scheduled task to synchronize local translations
