@@ -142,6 +142,18 @@ class UserTestCase(TestCase):
             User.validate_password('email', [user])
 
     @with_transaction()
+    def test_read_password_reset(self):
+        "Test password_reset can not be read"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = self.create_user('user', '12345')
+        with patch.object(user_module, 'send_message_transactional'):
+            User.reset_password([user], length=8)
+
+        self.assertIsNone(user.password_reset)
+
+    @with_transaction()
     def test_reset_password(self):
         "Test reset password"
         pool = Pool()
@@ -156,22 +168,28 @@ class UserTestCase(TestCase):
                 user_module, 'send_message_transactional') as send_message:
             User.reset_password([user], length=8)
             send_message.assert_called_once()
+            msg, = send_message.call_args.args
 
         cursor.execute(*user_table.select(
                 user_table.password_hash,
+                user_table.password_reset,
                 where=user_table.id == user.id))
-        password_hash, = cursor.fetchone()
+        password_hash, password_reset = cursor.fetchone()
 
-        self.assertEqual(len(user.password_reset), 8)
+        self.assertEqual(len(password_reset), 8)
         self.assertTrue(user.password_reset_expire)
+        self.assertIn(password_reset, msg.get_body().get_content())
         self.check_user('user', '12345')
-        self.check_user('user', user.password_reset)
+        self.check_user('user', password_reset)
 
     @with_transaction()
     def test_reset_password_expired(self):
         "Test reset password not working when expired"
         pool = Pool()
         User = pool.get('res.user')
+        user_table = User.__table__()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
 
         user = User(login='user', email='user@example.com')
         user.save()
@@ -179,11 +197,16 @@ class UserTestCase(TestCase):
         with patch.object(user_module, 'send_message_transactional'):
             User.reset_password([user], length=8)
 
+        cursor.execute(*user_table.select(
+                user_table.password_reset,
+                where=user_table.id == user.id))
+        password_reset, = cursor.fetchone()
+
         user.password_reset_expire = (
             datetime.datetime.now() - datetime.timedelta(10))
         user.save()
         self.assertFalse(User.get_login('user', {
-                    'password': user.password_reset,
+                    'password': password_reset,
                     }))
 
     @with_transaction()
