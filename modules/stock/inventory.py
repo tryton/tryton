@@ -467,7 +467,7 @@ class InventoryLine(ModelSQL, ModelView):
 
     @fields.depends('quantity', 'expected_quantity', 'unit')
     def on_change_with_quantity_variation(self, name=None):
-        if self.quantity and self.expected_quantity:
+        if self.quantity is not None and self.expected_quantity is not None:
             diff = self.quantity - self.expected_quantity
             if self.unit:
                 diff = self.unit.round(diff)
