@@ -1,3 +1,4 @@
+* Prevent searching on password hash and reset password token (issue15266)
 * Forbid to read the user's reset password and password hash (issue15259 issue15263)
 
 Version 8.0.1 - 2026-07-15

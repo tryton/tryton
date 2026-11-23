@@ -238,6 +238,14 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         return 'x' * 10
 
     @classmethod
+    def domain_password_hash(cls, domain, tables):
+        return Null
+
+    @classmethod
+    def domain_password_reset(cls, domain, tables):
+        return Null
+
+    @classmethod
     def set_password(cls, users, name, value):
         if value == 'x' * 10:
             return
