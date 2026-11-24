@@ -1340,6 +1340,10 @@ class ModelSQL(ModelStorage):
             default=None)
 
         for fname, language in fields_translated:
+            field = cls._fields[fname]
+            if (not isinstance(field, fields.FieldTranslate)
+                    or not field.translate):
+                raise ValueError(f"{fname} is not translatable")
             translations = Translation.get_ids(
                 f'{cls.__name__},{fname}', 'model', language, ids,
                 cached_after=max_write_date)

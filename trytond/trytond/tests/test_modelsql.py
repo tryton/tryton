@@ -1804,6 +1804,27 @@ class ModelSQLTranslationTestCase(TranslationTestCase):
                     }])
 
     @with_transaction()
+    def test_read_multiple_language_not_translated(self):
+        "Test read multiple  languages on not translated"
+        pool = Pool()
+        Model = pool.get('test.modelsql.no_translation')
+
+        record, = Model.create([{'name': "Foo"}])
+
+        values = Model.read([record.id], [
+                'name',
+                ])
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'name': "Foo",
+                    }])
+
+        with self.assertRaises(ValueError):
+            Model.read([record.id], [
+                    'name:language',
+                    ])
+
+    @with_transaction()
     def test_read_last_translation(self):
         "Test read last translation record"
         pool = Pool()

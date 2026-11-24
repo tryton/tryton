@@ -218,6 +218,12 @@ class ModelTranslationName(ModelSQL):
     name = fields.Char("Name", translate=True, help="Name help")
 
 
+class ModelNoTranslation(ModelSQL):
+    __name__ = 'test.modelsql.no_translation'
+
+    name = fields.Char("Name", translate=False)
+
+
 class ModelCheck(ModelSQL):
     __name__ = 'test.modelsql.check'
     value = fields.Integer("Value")
@@ -324,6 +330,7 @@ def register(module):
         NullOrder,
         ModelTranslation,
         ModelTranslationName,
+        ModelNoTranslation,
         ModelCheck,
         ModelUnique,
         ModelExclude,

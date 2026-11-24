@@ -7,8 +7,8 @@ from .char import Char
 from .date import Date, DateTime, Time, TimeDelta, Timestamp
 from .dict import Dict
 from .field import (
-    SQL_OPERATORS, Field, context_validate, depends, domain_validate,
-    get_eval_fields, on_change_result, states_validate)
+    SQL_OPERATORS, Field, FieldTranslate, context_validate, depends,
+    domain_validate, get_eval_fields, on_change_result, states_validate)
 from .float import Float
 from .fmany2one import fmany2one
 from .function import Function, MultiValue
@@ -25,7 +25,8 @@ from .text import FullText, Text
 
 __all__ = [
     depends, SQL_OPERATORS, on_change_result,
-    get_eval_fields, states_validate, domain_validate, context_validate, Field,
+    get_eval_fields, states_validate, domain_validate, context_validate,
+    Field, FieldTranslate,
     Boolean, Integer, Char, Text, FullText, Float, Numeric, Date,
     Timestamp, DateTime, Time, TimeDelta, Binary, Selection, Reference,
     Many2One, One2Many, Many2Many, Function, MultiValue, One2One, Dict,
