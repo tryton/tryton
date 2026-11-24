@@ -908,6 +908,8 @@ class ModelFieldAccess(
                 continue
             if field.endswith(':string'):
                 field = field[:-len(':string')]
+            if ':' in field:
+                field, _ = field.split(':', 1)
             if not accesses.get(field, True):
                 if raise_exception:
                     groups = Group.browse(User.get_groups())

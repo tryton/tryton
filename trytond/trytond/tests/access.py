@@ -14,6 +14,7 @@ class TestAccess(ModelSQL):
             ('foo', "Foo"),
             ('bar', "Bar"),
             ], "Selection")
+    field_translated = fields.Char("Field Translated", translate=True)
     relate = fields.Many2One('test.access.relate', "Relate")
     reference = fields.Reference("Reference", [
             (None, ""),
