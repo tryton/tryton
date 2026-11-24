@@ -5403,7 +5403,7 @@ function eval_pyson(value){
                     this.send_modified();
                     var value = this.field.get_client(this.record);
                     for (const key of new_names) {
-                        value[key] = null;
+                        Sao.setdefault(value, key, null);
                     }
                     this.field.set_client(this.record, value);
                     this._display().then(() => {

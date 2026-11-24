@@ -560,7 +560,8 @@ class DictWidget(Widget):
         new_keys = self.field.add_new_keys(ids, self.record)
         self.send_modified()
         value = self.field.get_client(self.record)
-        value.update({k: None for k in new_keys})
+        for key in new_keys:
+            value.setdefault(key, None)
         self.field.set_client(self.record, value)
         self.display()
 
