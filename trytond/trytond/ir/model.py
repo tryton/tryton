@@ -819,6 +819,12 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         accesses = dict((f, a[mode])
             for f, a in cls.get_access([model_name])[model_name].items())
         for field in fields:
+            if field.startswith('_'):
+                continue
+            if '.' in field:
+                continue
+            if field.endswith(':string'):
+                field = field[:-len(':string')]
             if not accesses.get(field, True):
                 if raise_exception:
                     raise AccessError(
