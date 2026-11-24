@@ -8,6 +8,11 @@ class TestAccess(ModelSQL):
     __name__ = 'test.access'
     field1 = fields.Char('Field 1')
     field2 = fields.Char('Field 2')
+    selection = fields.Selection([
+            (None, ""),
+            ('foo', "Foo"),
+            ('bar', "Bar"),
+            ], "Selection")
     relate = fields.Many2One('test.access.relate', "Relate")
     reference = fields.Reference("Reference", [
             (None, ""),

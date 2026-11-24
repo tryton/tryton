@@ -1166,6 +1166,23 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         with self.assertRaises(AccessError):
             ModelAccessProxy(proxy.field1)
 
+    @with_transaction(context=_context)
+    def test_no_access_selection_string(self):
+        "Test no access on selection string"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'model': 'test.access',
+                    'field': 'selection',
+                    'group': None,
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(AccessError):
+            TestAccess.read([record.id], ['selection:string'])
+
 
 class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
     _perm = 'perm_write'
