@@ -1,3 +1,4 @@
+* Forbid to read the user's reset password and password hash (issue15259 issue15263)
 
 Version 8.2.0 - 2026-10-05
 --------------------------

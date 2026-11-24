@@ -13,6 +13,7 @@ from sql.functions import CurrentTimestamp
 from sql.operators import Equal
 
 import trytond.config as config
+from trytond.backend import scalar_row
 from trytond.exceptions import RateLimitException
 from trytond.i18n import gettext
 from trytond.model import (
@@ -72,7 +73,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         fields.Char('Password'), 'get_password', setter='set_password')
     reset_password_token = fields.Char("Reset Password Token", strip=False)
     reset_password_token_expire = fields.Timestamp(
-        'Reset Password Token Expire')
+        'Reset Password Token Expire', readonly=True)
     party = fields.Many2One('party.party', 'Party', ondelete='RESTRICT')
     secondary_parties = fields.Many2Many(
         'web.user-party.party.secondary', 'user', 'party', "Secondary Parties")
@@ -130,6 +131,8 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         for user in users:
             to_write.extend([[user], {
                         'password_hash': cls.hash_password(value),
+                        'reset_password_token': None,
+                        'reset_password_token_expire': None,
                         }])
         cls.write(*to_write)
 
@@ -139,10 +142,39 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
             self.email = self.party.email
 
     @classmethod
+    def read(cls, ids, fields_names):
+        result = super().read(ids, fields_names)
+        cache = Transaction().get_cache().get(cls.__name__)
+        for values in result:
+            for name in ['password_hash', 'reset_password_token']:
+                if name in values:
+                    values[name] = None
+                if cache and values['id'] in cache:
+                    cache[values['id']][name] = None
+        return result
+
+    @classmethod
+    def search(
+            cls, domain, offset=0, limit=None, order=None, count=False,
+            query=False):
+        users = super().search(
+            domain, offset=offset, limit=limit, order=order, count=count,
+            query=query)
+        if not count and not query:
+            cache = Transaction().get_cache().get(cls.__name__)
+            if cache is not None:
+                for user in users:
+                    if user.id in cache:
+                        for name in ['password_hash', 'reset_password_token']:
+                            cache[user.id][name] = None
+        return users
+
+    @classmethod
     def copy(cls, users, default=None):
         default = default.copy() if default is not None else {}
         default['password_hash'] = None
         default['reset_password_token'] = None
+        default['reset_password_token_expire'] = None
         return super().copy(users, default=default)
 
     @classmethod
@@ -176,6 +208,8 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     def authenticate(cls, email, password):
         pool = Pool()
         Attempt = pool.get('web.user.authenticate.attempt')
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
         email = email.lower()
 
         count_ip = Attempt.count_ip()
@@ -190,10 +224,14 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         # Prevent brute force attack
         Transaction().atexit(time.sleep, 2 ** count - 1)
 
-        users = cls.search([('email', '=', email)])
-        if users:
-            user, = users
-            valid, new_hash = cls.check_password(password, user.password_hash)
+        cursor.execute(*table.select(
+                table.id, table.password_hash,
+                where=(table.email == email)
+                & (table.active == Literal(True))))
+        user_id, password_hash = cursor.fetchone() or (None, None)
+        if user_id is not None:
+            user = cls(user_id)
+            valid, new_hash = cls.check_password(password, password_hash)
             if valid:
                 if new_hash:
                     logger.info("Update password hash for %s", user.id)
@@ -275,8 +313,7 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     def reset_password(cls, users, from_=None):
         now = datetime.datetime.now()
         for user in users:
-            if (user.reset_password_token
-                    and user.reset_password_token_expire
+            if (user.reset_password_token_expire
                     and user.reset_password_token_expire > now):
                 # Prevent abusive reset
                 continue
@@ -296,15 +333,23 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
         self.reset_password_token_expire = None
 
     def get_email_reset_password(self):
-        return get_email(
-            'web.user.email_reset_password', self, self.languages)
+        reset_password_url = self._get_reset_password_url()
+        with Transaction().set_context(reset_password_url=reset_password_url):
+            return get_email(
+                'web.user.email_reset_password', self, self.languages)
 
-    def get_email_reset_password_url(self, url=None):
+    def _get_reset_password_url(self, url=None):
         if url is None:
             url = config.get('web', 'reset_password_url')
         if url is not None:
+            transaction = Transaction()
+            table = self.__class__.__table__()
+            cursor = transaction.connection.cursor(row_factory=scalar_row)
+            cursor.execute(*table.select(
+                    table.reset_password_token, where=table.id == self.id))
+            reset_password_token = cursor.fetchone()
             return _add_params(
-                url, token=self.reset_password_token, email=self.email)
+                url, token=reset_password_token, email=self.email)
         else:
             return ''
 
@@ -320,18 +365,22 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     def set_password_token(cls, email, token, password):
         pool = Pool()
         Attempt = pool.get('web.user.authenticate.attempt')
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
         email = email.lower()
 
         # Prevent brute force attack
         Transaction().atexit(
             time.sleep, random.randint(0, 2 ** Attempt.count(email) - 1))
 
-        users = cls.search([
-                ('email', '=', email),
-                ])
-        if users:
-            user, = users
-            if compare_digest(user.reset_password_token, token):
+        cursor.execute(*table.select(
+                table.id, table.reset_password_token,
+                where=(table.email == email)
+                & (table.active == Literal(True))))
+        user_id, reset_password_token = cursor.fetchone() or (None, None)
+        if user_id is not None:
+            user = cls(user_id)
+            if compare_digest(reset_password_token, token):
                 now = datetime.datetime.now()
                 expire = user.reset_password_token_expire
                 user.clear_reset_password_token()
@@ -485,4 +534,6 @@ class EmailResetPassword(Report):
             days=expire_delay.days,
             minutes=round(expire_delay.seconds / 60))
         context['expire_delay'] = expire_delay
+        context['reset_password_url'] = Transaction().context.get(
+            'reset_password_url', '')
         return context
