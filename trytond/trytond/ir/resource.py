@@ -147,6 +147,11 @@ class ResourceAccessMixin(ModelStorage):
         cls.check_access([r.id for r in records], mode='create')
         return records
 
+    @classmethod
+    def export_data(cls, records, fields_names, header=False):
+        cls.check_access([r.id for r in records], mode='read')
+        return super().export_data(records, fields_names, header=header)
+
 
 class ResourceMixin(ResourceAccessMixin, ModelStorage, ModelView):
 

@@ -235,6 +235,8 @@ class ResourceTestCase(TestCase):
                 Note.read([note.id], ['message'])
             with self.assertRaises(AccessError):
                 Note.delete([note])
+            with self.assertRaises(AccessError):
+                Note.export_data([note], ['message'])
 
     @with_transaction()
     def test_resources_search_limit(self):
