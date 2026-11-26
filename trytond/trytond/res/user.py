@@ -49,7 +49,7 @@ from trytond.model import (
     avatar_mixin, fields)
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool
-from trytond.pyson import Bool, Eval, PYSONEncoder
+from trytond.pyson import Eval, PYSONEncoder
 from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
@@ -130,12 +130,10 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             'invisible': not _has_password,
             })
     password_reset_expire = fields.Timestamp(
-        "Reset Password Expire",
+        "Reset Password Expire", readonly=True,
         states={
-            'required': Bool(Eval('password_reset')),
             'invisible': not _has_password,
-            },
-        depends=['password_reset'])
+            })
     signature = fields.Text('Signature')
     menu = fields.Many2One('ir.action', 'Menu Action',
         domain=[('usage', '=', 'menu')], required=True)
@@ -311,8 +309,15 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         _send_email(from_, users, cls.get_email_reset_password)
 
     def get_email_reset_password(self):
-        return get_email(
-            'res.user.email_reset_password', self, self.languages)
+        transaction = Transaction()
+        table = self.__class__.__table__()
+        cursor = transaction.connection.cursor()
+        cursor.execute(*table.select(
+                table.password_reset, where=table.id == self.id))
+        password_reset, = cursor.fetchone()
+        with transaction.set_context(password_reset=password_reset):
+            return get_email(
+                'res.user.email_reset_password', self, self.languages)
 
     @property
     def languages(self):
@@ -363,10 +368,11 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
         result = super(User, cls).read(ids, fields_names)
         cache = Transaction().get_cache().get(cls.__name__)
         for values in result:
-            if 'password_hash' in values:
-                values['password_hash'] = None
-            if cache and values['id'] in cache:
-                cache[values['id']]['password_hash'] = None
+            for name in ['password_hash', 'password_reset']:
+                if name in values:
+                    values[name] = None
+                if cache and values['id'] in cache:
+                    cache[values['id']][name] = None
         return result
 
     @classmethod
@@ -381,7 +387,8 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
             if cache is not None:
                 for user in users:
                     if user.id in cache:
-                        cache[user.id]['password_hash'] = None
+                        for name in ['password_hash', 'password_reset']:
+                            cache[user.id][name] = None
         return users
 
     @classmethod
@@ -445,6 +452,7 @@ class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
 
         default['password_hash'] = None
         default['password_reset'] = None
+        default['password_reset_expire'] = None
         default.setdefault('warnings')
         default.setdefault('applications')
 
@@ -1218,10 +1226,13 @@ class EmailResetPassword(Report):
 
     @classmethod
     def get_context(cls, records, header, data):
+        transaction = Transaction()
         context = super().get_context(records, header, data)
         context['host'] = host()
         context['http_host'] = http_host()
-        context['database'] = Transaction().database.name
+        context['database'] = transaction.database.name
+        context['password_reset'] = transaction.context.get(
+            'password_reset', '')
         expire_delay = (
             records[0].password_reset_expire - datetime.datetime.now())
         # Use a precision of minutes
