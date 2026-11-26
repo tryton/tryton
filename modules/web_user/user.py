@@ -19,7 +19,7 @@ try:
     import html2text
 except ImportError:
     html2text = None
-from sql import Literal
+from sql import Literal, Null
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Equal
@@ -121,6 +121,14 @@ class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
 
     def get_password(self, name):
         return 'x' * 10
+
+    @classmethod
+    def domain_password_hash(cls, domain, tables):
+        return Null
+
+    @classmethod
+    def domain_reset_password_token(cls, domain, tables):
+        return Null
 
     @classmethod
     def set_password(cls, users, name, value):
