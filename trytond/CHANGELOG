@@ -1,3 +1,7 @@
+
+Version 8.2.4 - 2026-11-26
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Enforce access rights on the selection field strings (issue15271)
 * Prevent searching on password hash and reset password (issue15266)
 * Enforce access rights when exporting resource data (issue15264)
