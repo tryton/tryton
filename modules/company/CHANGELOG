@@ -1,3 +1,7 @@
+
+Version 8.2.1 - 2026-11-26
+--------------------------
+* Bug fixes (see mercurial logs for details)
 * Prevent users from setting companies and employees as their preferences (issue15256)
 
 Version 8.2.0 - 2026-10-05
